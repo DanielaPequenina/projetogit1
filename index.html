@@ -4,261 +4,538 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daniela Costa | Apresentação</title>
+<title>Daniela Costa | O meu mundo</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #101827;
-  color: #f4f7fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f5f0;
+    color: #303b35;
 }
-.deck {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+
+/* MENU */
+header {
+    background: #ffffff;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px #0000000a;
 }
-.slide {
-  display: none;
-  width: 100%;
-  max-width: 1050px;
-  min-height: 650px;
-  padding: 65px;
-  border-radius: 25px;
-  background: linear-gradient(145deg,#202f46,#182438);
-  box-shadow: 0 20px 60px #0006;
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    color: #426451;
+    font-weight: bold;
 }
-.slide.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+nav a {
+    text-decoration: none;
+    color: #39483f;
+    margin-left: 25px;
+    font-size: 14px;
+    transition: .3s;
 }
-h1 { font-size: 65px; margin-bottom: 15px; }
-h2 { font-size: 40px; color: #e8b86d; }
-h3 { color: #e8b86d; }
-p, li {
-  font-size: 19px;
-  line-height: 1.7;
-  color: #c5d0df;
+
+nav a:hover {
+    color: #b18b52;
 }
-.accent { color: #e8b86d; }
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+
+/* INÍCIO */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+    linear-gradient(135deg, #dce8df, #f5eee2);
 }
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero small {
+    color: #54725e;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 8vw, 85px);
+    color: #355744;
+    margin: 25px 0;
+}
+
+.hero h1 span {
+    color: #b18b52;
+    font-style: italic;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #59665d;
+    margin-bottom: 35px;
+}
+
+.btn {
+    display: inline-block;
+    background: #426451;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #b18b52;
+    transform: translateY(-3px);
+}
+
+/* SECÇÕES */
+section {
+    padding: 85px 10%;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.titulo small {
+    color: #b18b52;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.titulo h2 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    color: #355744;
+    margin-top: 15px;
+}
+
+.titulo p {
+    color: #68746b;
+    margin-top: 15px;
+    line-height: 1.7;
+}
+
+/* SOBRE MIM */
+.sobre {
+    background: white;
+}
+
+.sobre-conteudo {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.sobre-conteudo p {
+    color: #657168;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+/* CARTÕES */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
 .card {
-  background: #ffffff0b;
-  border: 1px solid #ffffff22;
-  padding: 20px;
-  border-radius: 15px;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px #00000009;
+    transition: .3s;
+    border-bottom: 3px solid #dce8df;
 }
-.card p { font-size: 16px; }
-.label {
-  color: #e8b86d;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 13px;
-  margin-bottom: 20px;
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #b18b52;
 }
-.controls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #182438;
-  padding: 10px 18px;
-  border-radius: 30px;
+
+.icone {
+    font-size: 35px;
+    margin-bottom: 20px;
 }
-button {
-  background: #e8b86d;
-  color: #101827;
-  border: 0;
-  padding: 12px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
+
+.card h3 {
+    color: #426451;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
-button:disabled { opacity: .4; cursor: default; }
-#counter { color: white; }
-@media(max-width:650px) {
-  .deck { padding: 12px; }
-  .slide { padding: 25px; min-height: 80vh; }
-  h1 { font-size: 43px; }
-  h2 { font-size: 30px; }
-  p, li { font-size: 16px; }
-  .grid { grid-template-columns: 1fr; }
+
+.card p {
+    color: #68746b;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* EXPERIÊNCIA */
+.experiencia {
+    background: #e9eee7;
+}
+
+.lista {
+    max-width: 850px;
+    margin: auto;
+}
+
+.item {
+    background: white;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border-left: 5px solid #b18b52;
+}
+
+.item h3 {
+    color: #426451;
+    margin-bottom: 10px;
+}
+
+.item p {
+    color: #68746b;
+    line-height: 1.7;
+}
+
+/* COMPETÊNCIAS */
+.competencias {
+    background: white;
+}
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.etiquetas span {
+    background: #e6eee6;
+    color: #426451;
+    padding: 13px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* OBJETIVOS */
+.objetivos {
+    text-align: center;
+    background: #355744;
+    color: white;
+}
+
+.objetivos h2 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+.objetivos p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 18px;
+    color: #e1e9e2;
+}
+
+/* RODAPÉ */
+footer {
+    background: #263c30;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+}
+
+footer span {
+    color: #d5b77d;
+}
+
+/* TELEMÓVEL */
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 60px 7%;
+    }
+
+    .titulo h2 {
+        font-size: 32px;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<main class="deck">
+<header>
+    <div class="logo">Daniela Costa.</div>
 
-<section class="slide active">
-  <div class="label">Apresentação pessoal</div>
-  <h1>Daniela<br><span class="accent">Costa.</span></h1>
-  <p>Uma pessoa curiosa, prática e determinada, com vontade de aprender, evoluir e transformar cada experiência numa oportunidade.</p>
-  <h3>Percurso · Competências · Objetivos</h3>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre mim</a>
+        <a href="#formacao">Formação</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#competencias">Competências</a>
+        <a href="#objetivos">Objetivos</a>
+    </nav>
+</header>
+
+<!-- PÁGINA INICIAL -->
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <small>Bem-vindo ao meu espaço pessoal</small>
+
+        <h1>Olá, sou a<br><span>Daniela Costa</span></h1>
+
+        <p>
+            Sou uma pessoa dedicada, responsável e com vontade
+            de aprender. Acredito que cada experiência é uma
+            oportunidade para crescer, evoluir e construir
+            um futuro melhor.
+        </p>
+
+        <a href="#sobre" class="btn">Conhece a minha história</a>
+    </div>
 </section>
 
-<section class="slide">
-  <div class="label">01 — O meu percurso</div>
-  <h2>Experiências que me ensinaram</h2>
-  <p>Ao longo do meu percurso, tive contacto com diferentes ambientes de trabalho. Cada experiência ajudou-me a desenvolver responsabilidade, capacidade de adaptação e sentido de compromisso.</p>
-  <div class="grid">
-    <div class="card">
-      <h3>Atendimento e cafetaria</h3>
-      <p>Contacto com clientes, serviço, balcão e apoio ao funcionamento diário.</p>
+<!-- SOBRE MIM -->
+<section class="sobre" id="sobre">
+    <div class="titulo">
+        <small>QUEM SOU</small>
+        <h2>Um pouco sobre mim</h2>
     </div>
-    <div class="card">
-      <h3>Produção e indústria</h3>
-      <p>Experiência em produção, costura e trabalho orientado para objetivos.</p>
+
+    <div class="sobre-conteudo">
+        <p>
+            Chamo-me Daniela Costa e sou uma pessoa que valoriza
+            o respeito, a dedicação, a honestidade e o trabalho
+            em equipa.
+        </p>
+
+        <p>
+            Ao longo do meu percurso, tive oportunidade de
+            conhecer diferentes áreas profissionais, adquirir
+            experiências e desenvolver novas capacidades.
+        </p>
+
+        <p>
+            Gosto de aprender coisas novas, enfrentar desafios
+            e procurar melhorar todos os dias, tanto a nível
+            pessoal como profissional.
+        </p>
     </div>
-    <div class="card">
-      <h3>Restauração e bebidas</h3>
-      <p>Formação em serviço de sala, bar, organização e qualidade do serviço.</p>
-    </div>
-    <div class="card">
-      <h3>Área da infância</h3>
-      <p>Experiência de estágio em creche e interesse pelo cuidado e acompanhamento de crianças.</p>
-    </div>
-  </div>
 </section>
 
-<section class="slide">
-  <div class="label">02 — Formação e aprendizagem</div>
-  <h2>Aprender para fazer melhor</h2>
-  <p>Tenho desenvolvido conhecimentos em diferentes áreas, procurando ligar a aprendizagem à prática e a situações reais.</p>
-  <div class="grid">
-    <div class="card">
-      <h3>Restauração e bebidas</h3>
-      <p>Serviço de sala, mise-en-place, bar, cartas, menus e atendimento.</p>
+<!-- FORMAÇÃO -->
+<section id="formacao">
+    <div class="titulo">
+        <small>APRENDIZAGEM</small>
+        <h2>A minha formação e conhecimentos</h2>
+        <p>Áreas que tenho vindo a desenvolver ao longo do meu percurso.</p>
     </div>
-    <div class="card">
-      <h3>Turismo e hotelaria</h3>
-      <p>Acessibilidade, sustentabilidade, qualidade e segurança.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icone">🍽️</div>
+            <h3>Restauração e Bebidas</h3>
+            <p>
+                Serviço de sala, mise-en-place, bar, atendimento
+                ao cliente, organização e qualidade do serviço.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🏨</div>
+            <h3>Turismo e Hotelaria</h3>
+            <p>
+                Acessibilidade, sustentabilidade, segurança,
+                qualidade e satisfação do cliente.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">💻</div>
+            <h3>Informática</h3>
+            <p>
+                Microsoft Office, sistemas operativos,
+                bases de dados, SQL e ferramentas digitais.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">📊</div>
+            <h3>Gestão e Organização</h3>
+            <p>
+                Planeamento, organização de tarefas,
+                trabalho em equipa e desenvolvimento de projetos.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🧸</div>
+            <h3>Educação Infantil</h3>
+            <p>
+                Interesse pelo cuidado e acompanhamento
+                de crianças, com atenção, paciência e carinho.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">✨</div>
+            <h3>Criatividade</h3>
+            <p>
+                Criação de trabalhos, apresentações,
+                documentos e projetos com atenção ao detalhe.
+            </p>
+        </div>
+
     </div>
-    <div class="card">
-      <h3>Competências digitais</h3>
-      <p>Microsoft Office, sistemas operativos, bases de dados e SQL.</p>
-    </div>
-    <div class="card">
-      <h3>Organização e gestão</h3>
-      <p>Planeamento, processos, trabalho em equipa e projetos.</p>
-    </div>
-  </div>
 </section>
 
-<section class="slide">
-  <div class="label">03 — As minhas competências</div>
-  <h2>O que tenho para oferecer</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Relacionamento</h3>
-      <p>Atendimento, comunicação e atenção às necessidades das pessoas.</p>
+<!-- EXPERIÊNCIA -->
+<section class="experiencia" id="experiencia">
+    <div class="titulo">
+        <small>O MEU PERCURSO</small>
+        <h2>Experiência profissional</h2>
+        <p>
+            Diferentes experiências que contribuíram
+            para o meu crescimento.
+        </p>
     </div>
-    <div class="card">
-      <h3>Adaptação</h3>
-      <p>Capacidade de aprender tarefas diferentes e ajustar-me a novos contextos.</p>
+
+    <div class="lista">
+
+        <div class="item">
+            <h3>Atendimento e Cafetaria</h3>
+            <p>
+                Experiência no atendimento ao público,
+                serviço de balcão, apoio ao cliente
+                e tarefas de cafetaria.
+            </p>
+        </div>
+
+        <div class="item">
+            <h3>Produção e Indústria</h3>
+            <p>
+                Contacto com ambientes de produção,
+                trabalho manual, costura e cumprimento
+                de procedimentos.
+            </p>
+        </div>
+
+        <div class="item">
+            <h3>Restauração e Serviço</h3>
+            <p>
+                Desenvolvimento de conhecimentos ligados
+                ao serviço, organização da sala e
+                satisfação do cliente.
+            </p>
+        </div>
+
+        <div class="item">
+            <h3>Estágio em Creche</h3>
+            <p>
+                Experiência numa área de que gosto,
+                onde o cuidado, a paciência e a
+                responsabilidade são fundamentais.
+            </p>
+        </div>
+
     </div>
-    <div class="card">
-      <h3>Organização</h3>
-      <p>Gosto de estruturar trabalhos e apresentar informação de forma clara.</p>
-    </div>
-    <div class="card">
-      <h3>Vontade de evoluir</h3>
-      <p>Procuro corrigir erros, melhorar resultados e adquirir conhecimentos.</p>
-    </div>
-  </div>
 </section>
 
-<section class="slide">
-  <div class="label">04 — Os meus interesses</div>
-  <h2>Áreas que me motivam</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Hospitalidade</h3>
-      <p>Criar um serviço cuidado, organizado e acolhedor.</p>
+<!-- COMPETÊNCIAS -->
+<section class="competencias" id="competencias">
+    <div class="titulo">
+        <small>OS MEUS PONTOS FORTES</small>
+        <h2>As minhas competências</h2>
+        <p>Características que procuro colocar em prática diariamente.</p>
     </div>
-    <div class="card">
-      <h3>Cuidado infantil</h3>
-      <p>Uma área que me interessa pela importância da atenção, paciência e responsabilidade.</p>
+
+    <div class="etiquetas">
+        <span>Responsabilidade</span>
+        <span>Organização</span>
+        <span>Empatia</span>
+        <span>Dedicação</span>
+        <span>Trabalho em equipa</span>
+        <span>Adaptação</span>
+        <span>Comunicação</span>
+        <span>Persistência</span>
+        <span>Vontade de aprender</span>
     </div>
-    <div class="card">
-      <h3>Criatividade</h3>
-      <p>Dar forma a apresentações, documentos e projetos profissionais.</p>
-    </div>
-    <div class="card">
-      <h3>Tecnologia</h3>
-      <p>Explorar ferramentas que ajudam a resolver problemas e aprender.</p>
-    </div>
-  </div>
 </section>
 
-<section class="slide">
-  <div class="label">05 — Os meus valores</div>
-  <h2>A minha forma de estar</h2>
-  <p style="font-size:27px;color:white">
-    "Não preciso de saber tudo à primeira. Preciso de manter a vontade de aprender, ter coragem para melhorar e não desistir perante as dificuldades."
-  </p>
-  <p>Valorizo o respeito, a dedicação, a honestidade e o trabalho bem feito. Acredito que a evolução acontece quando juntamos esforço, prática e abertura para aprender com os outros.</p>
+<!-- OBJETIVOS -->
+<section class="objetivos" id="objetivos">
+    <small>O MEU FUTURO</small>
+
+    <h2>Os meus objetivos</h2>
+
+    <p>
+        Quero continuar a investir na minha formação,
+        adquirir novas experiências profissionais e
+        desenvolver as minhas capacidades.
+
+        Procuro oportunidades que me permitam crescer,
+        aprender, superar desafios e demonstrar o meu
+        valor através do trabalho e da dedicação.
+    </p>
+
+    <br><br>
+
+    <h2>Obrigada pela visita!</h2>
 </section>
 
-<section class="slide">
-  <div class="label">06 — O meu futuro</div>
-  <h2>Continuar a crescer</h2>
-  <p>Quero consolidar a minha formação, ganhar novas experiências profissionais e encontrar oportunidades onde possa colocar as minhas competências em prática, continuar a aprender e acrescentar valor.</p>
-  <div class="grid">
-    <div class="card"><h3>Aprender</h3><p>Adquirir novos conhecimentos.</p></div>
-    <div class="card"><h3>Experimentar</h3><p>Aceitar novos desafios.</p></div>
-    <div class="card"><h3>Evoluir</h3><p>Melhorar pessoal e profissionalmente.</p></div>
-    <div class="card"><h3>Contribuir</h3><p>Fazer a diferença no meu trabalho.</p></div>
-  </div>
-  <h3 style="margin-top:30px">Obrigada pela atenção!</h3>
-</section>
-
-</main>
-
-<nav class="controls">
-  <button id="prev" onclick="changeSlide(-1)">Anterior</button>
-  <span id="counter">1 / 7</span>
-  <button id="next" onclick="changeSlide(1)">Seguinte</button>
-  <button onclick="document.documentElement.requestFullscreen?.()">⛶</button>
-</nav>
-
-<script>
-let current = 0;
-const slides = document.querySelectorAll(".slide");
-
-function showSlide() {
-  slides.forEach((slide, index) => {
-    slide.classList.toggle("active", index === current);
-  });
-  document.getElementById("counter").textContent =
-    (current + 1) + " / " + slides.length;
-  document.getElementById("prev").disabled = current === 0;
-  document.getElementById("next").disabled =
-    current === slides.length - 1;
-}
-
-function changeSlide(direction) {
-  current = Math.max(0, Math.min(slides.length - 1, current + direction));
-  showSlide();
-}
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "ArrowRight" || event.key === " ") changeSlide(1);
-  if (event.key === "ArrowLeft") changeSlide(-1);
-});
-
-showSlide();
-</script>
+<footer>
+    <p>© 2026 <span>Daniela Costa</span> | Portefólio Pessoal</p>
+    <p>Aprender. Evoluir. Conquistar.</p>
+</footer>
 
 </body>
 </html>
