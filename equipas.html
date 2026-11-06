@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TECH SJM 2026 - Projeto final da turma de Técnico Especialista em Tecnologias e Programação de Sistemas de Informação.">
+    <title>TECH SJM 2026 | Programação e Sistemas de Informação</title>
+
+    <style>
+        :root {
+            --dark: #101827;
+            --dark-light: #18263b;
+            --blue: #3978f6;
+            --cyan: #42d6d0;
+            --white: #ffffff;
+            --light: #f3f6fb;
+            --text: #344054;
+            --muted: #98a5b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* MENU */
+
+        header {
+            background: rgba(16, 24, 39, 0.97);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e4eaf4;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* DESTAQUE INICIAL */
+
+        .hero {
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(66,214,208,0.18), transparent 30%),
+                linear-gradient(135deg, #101827, #1d3760 65%, #174e68);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 17px;
+            border: 1px solid rgba(66,214,208,0.5);
+            color: var(--cyan);
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(43px, 8vw, 76px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--cyan);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #d1dbea;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button-primary {
+            background: var(--cyan);
+            color: var(--dark);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-3px);
+            background: #75eee7;
+        }
+
+        .button-outline {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .button-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* SECÇÕES */
+
+        section {
+            padding: 85px 25px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title small {
+            color: var(--blue);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: 12px auto 0;
+            color: #718096;
+        }
+
+        /* SOBRE */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--dark);
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: var(--dark);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(16,24,39,0.15);
+        }
+
+        .info-card h3 {
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+
+        .info-card p {
+            margin: 12px 0;
+            color: #d8e2f0;
+        }
+
+        /* EQUIPA */
+
+        .team-section {
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .team-card {
+            background: var(--light);
+            padding: 32px 24px;
+            text-align: center;
+            border-radius: 15px;
+            border: 1px solid #e5eaf2;
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(16,24,39,0.1);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .team-card h3 {
+            color: var(--dark);
+            font-size: 21px;
+        }
+
+        .team-card .role {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: bold;
+            margin: 7px 0 15px;
+        }
+
+        .team-card p {
+            font-size: 14px;
+            color: #667085;
+        }
+
+        /* PROJETOS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 14px;
+            padding: 27px;
+            border: 1px solid #e6ebf2;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(16,24,39,0.08);
+        }
+
+        .project-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .project-status {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 5px 11px;
+            border-radius: 20px;
+            background: #e3f8f5;
+            color: #087d71;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* COMPETÊNCIAS */
+
+        .skills-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .skills-section .section-title h2 {
+            color: white;
+        }
+
+        .skills-section .section-title p {
+            color: #bdc9da;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill {
+            background: var(--dark-light);
+            padding: 23px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #30425d;
+        }
+
+        .skill span {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .skill h3 {
+            font-size: 15px;
+            color: var(--cyan);
+        }
+
+        /* CONTACTOS */
+
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(16,24,39,0.06);
+        }
+
+        .contact-box h3 {
+            font-size: 25px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #718096;
+            margin-bottom: 12px;
+        }
+
+        .contact-details {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e8edf3;
+            font-size: 14px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #0b1220;
+            color: #aebbd0;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer strong {
+            color: var(--cyan);
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 5px;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 800px) {
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                padding: 25px;
+                background: var(--dark);
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title h2 {
+                font-size: 29px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">TECH <span>SJM.</span></a>
+
+            <button class="menu-button" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" onclick="closeMenu()">Início</a></li>
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#equipa" onclick="closeMenu()">Equipa</a></li>
+                <li><a href="#projetos" onclick="closeMenu()">Projetos</a></li>
+                <li><a href="#competencias" onclick="closeMenu()">Competências</a></li>
+                <li><a href="#contactos" onclick="closeMenu()">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PÁGINA INICIAL -->
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <span class="tag">PROJETO FINAL • 2026</span>
+
+                <h1>O FUTURO É <span>DIGITAL.</span></h1>
+
+                <p>
+                    Bem-vindos ao TECH SJM 2026.
+                    Um projeto desenvolvido por alunos do curso de
+                    Técnico Especialista em Tecnologias e Programação
+                    de Sistemas de Informação, em São João da Madeira.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#sobre" class="button button-primary">Conhecer o projeto</a>
+                    <a href="#equipa" class="button button-outline">A nossa equipa</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE O PROJETO -->
+        <section id="sobre">
+            <div class="container">
+                <div class="section-title">
+                    <small>Quem somos</small>
+                    <h2>Sobre o projeto</h2>
+                    <p>Conhecimento, criatividade e tecnologia unidos num só projeto.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Aprender. Criar. Evoluir.</h3>
+
+                        <p>
+                            O TECH SJM 2026 é um projeto académico desenvolvido
+                            no âmbito da formação de Técnico/a Especialista em
+                            Tecnologias e Programação de Sistemas de Informação.
+                        </p>
+
+                        <p>
+                            O objetivo é aplicar conhecimentos de programação,
+                            desenvolvimento web e trabalho colaborativo,
+                            criando um website que representa a nossa turma
+                            e o trabalho desenvolvido ao longo da formação.
+                        </p>
+
+                        <p>
+                            Através da utilização do Git e do GitHub,
+                            colocamos em prática ferramentas essenciais
+                            para o desenvolvimento de projetos tecnológicos.
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Informação da formação</h3>
+                        <p><strong>Curso:</strong> Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação</p>
+                        <p><strong>Local:</strong> São João da Madeira</p>
+                        <p><strong>Ano:</strong> 2026</p>
+                        <p><strong>UC:</strong> UC00617</p>
+                        <p><strong>Formadora:</strong> Sara Monteiro</p>
+                        <p><strong>Ação:</strong> 25.0373</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPA -->
+        <section class="team-section" id="equipa">
+            <div class="container">
+                <div class="section-title">
+                    <small>As pessoas por trás do projeto</small>
+                    <h2>A nossa equipa</h2>
+                    <p>Três elementos, um objetivo: construir algo em conjunto.</p>
+                </div>
+
+                <div class="team-grid">
+
+                    <div class="team-card">
+                        <div class="avatar">A</div>
+                        <h3>Alexandre</h3>
+                        <div class="role">REPOSITÓRIO E PUBLICAÇÃO</div>
+                        <p>
+                            Responsável pela criação e gestão do repositório
+                            principal, organização do projeto e publicação
+                            do website através do GitHub Pages.
+                        </p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="avatar">D</div>
+                        <h3>Daniela</h3>
+                        <div class="role">PROJETOS E EQUIPA</div>
+                        <p>
+                            Responsável pela apresentação dos projetos
+                            desenvolvidos e pela organização da informação
+                            relativa aos elementos da equipa.
+                        </p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="avatar">P</div>
+                        <h3>Pedro</h3>
+                        <div class="role">CONTACTOS E DISCIPLINAS</div>
+                        <p>
+                            Responsável pela organização da informação
+                            de contactos, disciplinas e conteúdos
+                            relacionados com a formação.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETOS -->
+        <section id="projetos">
+            <div class="container">
+                <div class="section-title">
+                    <small>O nosso trabalho</small>
+                    <h2>Projetos e atividades</h2>
+                    <p>Uma demonstração das áreas que exploramos durante a formação.</p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-icon">💻</div>
+                        <h3>Desenvolvimento Web</h3>
+                        <p>
+                            Criação de páginas e websites utilizando
+                            tecnologias de desenvolvimento web,
+                            com atenção ao design e à experiência do utilizador.
+                        </p>
+                        <span class="project-status">Área de aprendizagem</span>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">🗄️</div>
+                        <h3>Bases de Dados</h3>
+                        <p>
+                            Organização, criação e gestão de bases de dados,
+                            utilizando estruturas e linguagens adequadas
+                            ao armazenamento de informação.
+                        </p>
+                        <span class="project-status">Área de aprendizagem</span>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">🔗</div>
+                        <h3>Git e GitHub</h3>
+                        <p>
+                            Controlo de versões, gestão de repositórios,
+                            criação de branches, Pull Requests e colaboração
+                            entre os elementos do grupo.
+                        </p>
+                        <span class="project-status">Projeto UC00617</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPETÊNCIAS -->
+        <section class="skills-section" id="competencias">
+            <div class="container">
+                <div class="section-title">
+                    <small>O que aprendemos</small>
+                    <h2>Conhecimentos e competências</h2>
+                    <p>
+                        Competências técnicas e pessoais importantes
+                        para o futuro profissional na área tecnológica.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill">
+                        <span>🌐</span>
+                        <h3>Desenvolvimento Web</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>⌨️</span>
+                        <h3>Programação</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🗃️</span>
+                        <h3>Bases de Dados</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🐙</span>
+                        <h3>Git e GitHub</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🔐</span>
+                        <h3>Segurança Informática</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🤝</span>
+                        <h3>Trabalho em Equipa</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🧠</span>
+                        <h3>Resolução de Problemas</h3>
+                    </div>
+
+                    <div class="skill">
+                        <span>🚀</span>
+                        <h3>Inovação e Criatividade</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTOS -->
+        <section id="contactos">
+            <div class="container">
+                <div class="section-title">
+                    <small>Fala connosco</small>
+                    <h2>Contactos e informação</h2>
+                    <p>Este website representa o trabalho desenvolvido pelo nosso grupo.</p>
+                </div>
+
+                <div class="contact-box">
+                    <h3>TECH SJM 2026</h3>
+
+                    <p>
+                        Projeto final da formação de Técnico/a Especialista
+                        em Tecnologias e Programação de Sistemas de Informação.
+                    </p>
+
+                    <p>
+                        Desenvolvido por Alexandre, Daniela e Pedro.
+                    </p>
+
+                    <div class="contact-details">
+                        <p><strong>Unidade de Competência:</strong> UC00617 – Utilizar Serviços Git e GitHub</p>
+                        <p><strong>Formadora:</strong> Sara Monteiro</p>
+                        <p><strong>Ação de formação:</strong> 25.0373</p>
+                        <p><strong>Ano:</strong> 2026</p>
+                        <p><strong>Local:</strong> São João da Madeira</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p><strong>TECH SJM 2026</strong> | Programação e Sistemas de Informação</p>
+        <p>Desenvolvido por Alexandre, Daniela e Pedro.</p>
+        <p>© 2026 — Projeto académico.</p>
+    </footer>
+
+    <!-- MENU PARA TELEMÓVEIS -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>
